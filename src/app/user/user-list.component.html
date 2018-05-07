@@ -1,0 +1,89 @@
+<div class="bqn">
+  <div class="bqo">
+    <h6 class="bqq">Dashboards</h6>
+    <h2 class="bqp">User List</h2>
+  </div>
+</div>
+<div class="bop ayg">
+  <div class="boq bor">
+    <div class="axm bpy">
+      <input type="text" class="form-control bsx" placeholder="Search orders">
+      <span class="bv bhw"></span>
+    </div>
+  </div>
+  <div class="boq">
+    <div class="ol">
+      <button type="button" class="ce nr">
+        <span class="bv bji"></span>
+      </button>
+      <button type="button" class="ce nr">
+        <span class="bv bei"></span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="ly">
+  <table class="ck" data-sort="table">
+    <thead>
+      <tr>
+        <th>Serial No</th>
+        <th>User Name</th>
+        <th>Desciption</th>
+        <th>User Role</th>
+        <th>Date</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList;let index=index">
+        <td>
+          <a (click)="UpdateUser(user)" style="cursor: pointer;">#{{index+1}}</a>
+        </td>
+        <td>{{user.UserName}}</td>
+        <td>{{user.Description}}</td>
+        <td>abc</td>
+        <td>{{user.CreatedDate}}</td>
+        <td>
+          <span (click)="RemoveUser(user.EncUserID)" class="bv bdh" style="cursor: pointer;"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showError" style="margin-bottom: 10px" class="alert-danger">
+  {{errMessage}}
+</div>
+<button type="button" style="margin-bottom: 10px" (click)="CreateUser()" class="btn btn-primary">Create User</button>
+<div class="avv">
+  <nav>
+    <ul class="qn">
+      <li class="qp">
+        <a class="qo" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="adp">Previous</span>
+        </a>
+      </li>
+      <li class="qp active">
+        <a class="qo" href="#">1</a>
+      </li>
+      <li class="qp">
+        <a class="qo" href="#">2</a>
+      </li>
+      <li class="qp">
+        <a class="qo" href="#">3</a>
+      </li>
+      <li class="qp">
+        <a class="qo" href="#">4</a>
+      </li>
+      <li class="qp">
+        <a class="qo" href="#">5</a>
+      </li>
+      <li class="qp">
+        <a class="qo" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="adp">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

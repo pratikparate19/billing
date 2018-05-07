@@ -1,0 +1,48 @@
+<div class="bqn">
+    <div class="bqo">
+        <h6 class="bqq">Dashboards</h6>
+        <h2 class="bqp">User Info</h2>
+    </div>
+</div>
+<form ngForm="frmUser" #frmUser='ngForm' novalidate>
+    <div class="form-group">
+        <label for="UserName">User Name</label>
+        <input type="text" name="UserName" #UserName='ngModel' [(ngModel)]="user.UserName" class="form-control" id="UserName" placeholder="Enter User Name"
+            required>
+        <div class="alert-danger"style="margin-top: 5px" role="alert">
+            User Name is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="UserPassword">User Password</label>
+        <input type="password" name="UserPassword" #UserPassword='ngModel' [(ngModel)]="user.Password" class="form-control" id="UserPassword"
+            placeholder="Enter you Password" required>
+
+        <div class="alert-danger" style="margin-top: 5px"
+            role="alert">
+            Password is required
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <input type="text" name="Description" #Description='ngModel' [(ngModel)]="user.Description" class="form-control" id="Description"
+            placeholder="Enter description here">
+    </div>
+    <div class="form-group">
+        <label for="UserRole">User Role</label>
+        <select class="form-control" name="UserRole" id="UserRole" #UserRole='ngModel' [(ngModel)]="user.UserRole" required>
+            <option *ngFor="let role of UserRoles" [ngValue]="role.RoleID"> {{role.RoleName}} </option>
+        </select>
+        <div class="alert-danger"  style="margin-top: 5px" role="alert">
+            User Role is required
+        </div>
+    </div>
+    <div *ngIf="showError" class="alert-danger">
+        {{errMessage}}
+    </div>
+    <button *ngIf="UserID=='-1';else update" type="submit" (click)="frmUser.valid?SaveUser():submitted=true" class="btn btn-primary">Save User</button>
+    <ng-template #update>
+        <button type="submit" (click)="frmUser.valid?UpdateUser():submitted=true" class="btn btn-primary">Update User</button>
+    </ng-template>
+</form>
